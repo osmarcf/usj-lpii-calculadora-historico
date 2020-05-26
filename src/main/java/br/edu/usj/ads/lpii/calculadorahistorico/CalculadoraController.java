@@ -16,7 +16,11 @@ public class CalculadoraController {
         Double numero2Double = Double.parseDouble(numero2);
         Double resultado = numero1Double + numero2Double;
 
-        String operacao = numero1 + " + " + numero2 + " = " + resultado.toString();
+        String operacaoString = numero1 + " + " + numero2 + " = " + resultado.toString();
+
+        Operacao operacao = new Operacao();
+        operacao.setOperacao(operacaoString);
+
         historico.adicionar(operacao);
 
         ModelAndView modelAndView = new ModelAndView("index");
