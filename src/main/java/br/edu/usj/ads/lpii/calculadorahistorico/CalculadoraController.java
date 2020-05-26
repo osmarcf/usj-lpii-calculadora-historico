@@ -5,12 +5,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class CalculadoraController {
 
     @Autowired
     OperacaoRepository operacaoRepository;
+
+    @GetMapping(value="/")
+    public ModelAndView getHistorico() {
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("historico", operacaoRepository.findAll());
+        return modelAndView;
+    }
 
     @PostMapping(value="/calcula")
     public ModelAndView postCalcula(@RequestParam String numero1, @RequestParam String numero2) {
