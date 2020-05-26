@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    
+    <form action="/calcula" method="POST">
+        <input type="text" name="numero1" id="numero1" />
+        <input type="text" name="numero2" id="numero2" />
+        <input type="submit" value="Calcula" />
+    </form>
+
+    <div th:if="${resultado}" th:text="${resultado}"></div>
+
+    <ul th:if="${historico}">
+        <li th:each="operacao : ${historico}" th:text="${operacao}"></li>
+    </ul>
+</body>
+</html>
