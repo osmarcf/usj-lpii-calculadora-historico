@@ -1,13 +1,6 @@
 package br.edu.usj.ads.lpii.calculadorahistorico;
 
-import static org.springframework.http.ResponseEntity.ok;
-
-import java.util.List;
-
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,13 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class CalculadoraController {
 
     Historico historico = new Historico();
-
-    @GetMapping(value="/operacoes")
-    public ResponseEntity<List<String>> getOperacoes() {
-        return ok()
-            .contentType(MediaType.APPLICATION_JSON)
-            .body(historico.lerOperacoes());
-    }
 
     @PostMapping(value="/calcula")
     public ModelAndView postCalcula(@RequestParam String numero1, @RequestParam String numero2) {
